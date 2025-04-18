@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mateo Novosel | ASP.NET Core Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4d84e2;
+            --secondary-color: #7c91f9;
+            --dark-bg: #121212;
+            --card-bg: #1e1e1e;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --accent-color: #8c52ff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: #0d0d0d;
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+        
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .profile-name {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .profile-title {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .profile-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+        
+        .contact-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .contact-links a {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        
+        .contact-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        section {
+            padding: 2rem 0;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            border-bottom: 1px solid #333;
+            padding-bottom: 0.5rem;
+        }
+        
+        .about-content {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid #333;
+        }
+        
+        .skills-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .skill-tag {
+            background-color: rgba(77, 132, 226, 0.2);
+            color: var(--secondary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(77, 132, 226, 0.3);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #333;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(77, 132, 226, 0.2);
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            height: 100%;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .project-tag {
+            background-color: rgba(140, 82, 255, 0.15);
+            color: var(--accent-color);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(140, 82, 255, 0.3);
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .project-link {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .project-link:hover {
+            background-color: #3a70cc;
+            transform: translateY(-2px);
+        }
+        
+        .contact-form {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid #333;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid #444;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: var(--text-primary);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(77, 132, 226, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: var(--text-primary);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .btn:hover {
+            background-color: #3a70cc;
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            background-color: #0d0d0d;
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            border-top: 1px solid #333;
+        }
+        
+        .footer-content {
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="profile-container">
+                <!-- Replace with your actual image or use a placeholder -->
+                <img src="slika.jpg" alt="Mateo Novosel" class="profile-img">
+                <h1 class="profile-name">Mateo Novosel</h1>
+                <p class="profile-title">ASP.NET Core Developer</p>
+                <p class="profile-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Petrinja, Croatia
+                </p>
+                <div class="contact-links">
+                    <a href="https://github.com/novosel2" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/mateo-novosel-2902062a6" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:mateo.novosel2@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>I'm a backend developer specializing in ASP.NET Core with 3 years of experience building robust RESTful APIs and web applications. Currently in my final year of high school studying computer science, I'm passionate about creating scalable and secure backend solutions.</p>
+                <br>
+                <p>My expertise includes implementing JWT authentication, role-based authorization, database design, and cloud deployments with Azure and AWS. I'm looking to apply my skills to help businesses create powerful backend systems and APIs.</p>
+                
+                <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem; text-align: center; color: var(--text-primary);">Technical Skills</h3>
+                <div class="skills-container">
+                    <span class="skill-tag">ASP.NET Core</span>
+                    <span class="skill-tag">C#</span>
+                    <span class="skill-tag">REST APIs</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">Entity Framework</span>
+                    <span class="skill-tag">JWT Authentication</span>
+                    <span class="skill-tag">Cloud Deplyoment</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Social Network API</h3>
+                        <p>A comprehensive backend API for a social networking platform with authentication, feeds, media storage, and interactive features.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">ASP.NET Core</span>
+                            <span class="project-tag">PostgreSQL</span>
+                            <span class="project-tag">JWT</span>
+                            <span class="project-tag">Azure Blob Storage</span>
+                            <span class="project-tag">Cloud Deployment</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/novosel2/snetapi" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://snetapi-evgqgtdcc0b6a2e9.germanywestcentral-01.azurewebsites.net/swagger/index.html" target="_blank" class="project-link"><i class="fas fa-plug"></i>Demo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Food Order API</h3>
+                        <p>A backend system for food ordering applications featuring user accounts, order management, and menu customization.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">ASP.NET Core</span>
+                            <span class="project-tag">PostgreSQL</span>
+                            <span class="project-tag">Entity Framework</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/novosel2/foodorderapi" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Blog API</h3>
+                        <p>A backend API for managing blog content with posts, comments, categories. A simple API made for learning.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">ASP.NET Core</span>
+                            <span class="project-tag">PostgreSQL</span>
+                            <span class="project-tag">Entity Framework</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/novosel2/personalblogapi" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" id="subject" name="subject" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" name="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Mateo Novosel. All rights reserved.</p>
+            </div>
+            <div>
+                <p>mateo.novosel2@gmail.com &nbsp; | &nbsp; +385 95 791 6849</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Basic form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! This form is not yet connected to a backend. Please contact me directly via email.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
